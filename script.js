@@ -1,3 +1,5 @@
+console.log("Script carregou!");
+
 // espera a página carregar totalmente
 window.addEventListener("load", () => {
   // ❤️ CORAÇÃO
@@ -80,4 +82,5 @@ const noBtn = document.querySelector(".no"); if (noBtn) { let step = 0; noBtn.ad
     });
   }
 });
+
 
