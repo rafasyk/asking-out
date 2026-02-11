@@ -71,12 +71,12 @@ const noBtn = document.querySelector(".no"); if (noBtn) { let step = 0; noBtn.ad
       const formattedDate = `${day}/${month}`;
 
       // abre WhatsApp
-      setTimeout(() => {
         const phone = "5515997237062"; // seu número
         const message = `anotado! dia ${formattedDate}, beijos minha gatinha gostosa já to com sdd`;
         const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-        window.open(url, "_blank");
-      }, 1000);
+         window.location.href = url;
+      };
     });
   }
+
 });
