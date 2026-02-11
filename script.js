@@ -10,7 +10,6 @@ window.addEventListener("load", () => {
     setTimeout(() => {
       heart.classList.remove("hidden");
       heart.classList.add("show");
-      console.log("Heart mostrado!");
     }, 800);
   }
 
@@ -22,13 +21,11 @@ window.addEventListener("load", () => {
 
   if (slides.length > 0 && nextBtn) {
     let currentSlide = 0;
-
     nextBtn.addEventListener("click", () => {
       slides[currentSlide].classList.remove("active");
       currentSlide++;
       if (currentSlide >= slides.length) currentSlide = slides.length - 1;
       slides[currentSlide].classList.add("active");
-      console.log("Slide atual:", currentSlide);
     });
   }
 
@@ -39,7 +36,6 @@ window.addEventListener("load", () => {
   if (noBtn) {
     let step = 0;
     noBtn.addEventListener("mouseover", () => {
-      // Muda o texto
       if (step === 0) {
         noBtn.textContent = "eu avisei";
         step++;
@@ -48,9 +44,8 @@ window.addEventListener("load", () => {
         step++;
       }
 
-      // Faz o botão "fugir"
-      const x = Math.random() * 200 - 90; // deslocamento horizontal
-      const y = Math.random() * 200 - 90; // deslocamento vertical
+      const x = Math.random() * 200 - 90;
+      const y = Math.random() * 200 - 90;
       noBtn.style.transform = `translate(${x}px, ${y}px)`;
     });
   }
@@ -65,7 +60,6 @@ window.addEventListener("load", () => {
     yesBtn.addEventListener("click", () => {
       datePicker.classList.remove("hidden");
       datePicker.classList.add("show");
-      console.log("Calendário mostrado!");
     });
   }
 
@@ -91,10 +85,23 @@ window.addEventListener("load", () => {
       const [year, month, day] = date.split("-");
       const formattedDate = `${day}/${month}`;
 
-      // Abre WhatsApp
+      // Mensagem
       const phone = "5515997237062"; // seu número
-      const message = `Anotado! Dia ${formattedDate}, beijo 😄`;
-      const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+      const message = `Anotado! Dia ${formattedDate}, beijos minha gatinha gostosa já to com sdd`;
+
+      // Detecta se é mobile
+      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+      let url;
+      if (isMobile) {
+        // Abre direto no app do WhatsApp
+        url = `whatsapp://send?phone=${phone}&text=${encodeURIComponent(message)}`;
+      } else {
+        // Abre WhatsApp Web no desktop
+        url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+      }
+
+      // Abre o link
       window.location.href = url;
     });
   }
