@@ -1,0 +1,177 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(to bottom right, rgb(255, 0, 140), rgb(255, 161, 208));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  background: #fff;
+  padding: 2rem;
+  width: 100%;
+  max-width: 420px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.convite {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  text-align: center;
+  font-family: "Oswald", sans-serif;
+  font-weight: 600;
+  color: whitesmoke;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+}
+
+.btn-convite {
+  display: block;
+  padding: 1rem 2.2rem;
+
+  font-family: "Oswald", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+
+  color: rgb(255, 0, 140);
+  background-color: whitesmoke;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+
+  transition: all 0.3s ease;
+}
+
+.btn-convite:hover {
+  background-color: #e5e5e5;
+  transform: scale(1.05);
+}
+
+.heart {
+  font-size: 50px;
+  color: whitesmoke;
+  margin: 1rem 0;
+  transition: all 0.8s ease;
+}
+
+.hidden {
+  opacity: 0;
+  transform: scale(0.5);
+}
+
+.show {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.carousel {
+  text-align: center;
+}
+
+.slide {
+  display: none;
+  font-family: "Oswald", sans-serif;
+  font-size: 1.6rem;
+  color: whitesmoke;
+  line-height: 1.4;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.slide.active {
+  display: block;
+  opacity: 1;
+}
+
+.slide img {
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  width: 300px;
+}
+
+.next {
+  margin-top: 2rem;
+  background: none;
+  border: 2px solid rgb(255, 0, 140);
+  color: rgb(255, 0, 140);
+  font-size: 1.5rem;
+  padding: 0.4rem 1rem;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.next:hover {
+  background: rgb(255, 0, 140);
+  color: white;
+}
+
+.choices {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.choices button {
+  font-family: "Oswald", sans-serif;
+  padding: 0.6rem 1.6rem;
+  font-size: 1rem;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.yes {
+  background: whitesmoke;
+  color: rgb(255, 0, 140);
+}
+
+.no {
+  background: transparent;
+  border: 1px solid whitesmoke;
+  color: whitesmoke;
+  position: relative;
+}
+
+.date-picker {
+  margin-top: 1.5rem;
+  text-align: center;
+  font-family: "Oswald", sans-serif;
+  color: whitesmoke;
+}
+
+.date-picker p {
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.date-picker input {
+  padding: 0.4rem;
+  border-radius: 8px;
+  border: none;
+  font-family: inherit;
+}
+
+.confirm {
+  margin-left: 0.5rem;
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  background: whitesmoke;
+  color: rgb(255, 0, 140);
+}
