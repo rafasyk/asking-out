@@ -73,34 +73,29 @@ window.addEventListener("load", () => {
 
   // CONFIRMAR DATA & WHATSAPP (mobile-friendly)
   const confirmBtn = document.querySelector(".confirm");
-  const finalMsg = document.getElementById("finalMsg");
+const finalMsg = document.getElementById("finalMsg");
 
-  if (confirmBtn) {
-    confirmBtn.addEventListener("click", () => {
-      const dateInput = document.getElementById("date");
-      if (!dateInput || !dateInput.value) return;
+if (confirmBtn) {
+  confirmBtn.addEventListener("click", () => {
+    const dateInput = document.getElementById("date");
+    if (!dateInput || !dateInput.value) return;
 
-      const [year, month, day] = dateInput.value.split("-");
-      const formattedDate = `${day}/${month}`;
+    const date = dateInput.value;
 
-      if (datePicker) {
-        datePicker.classList.add("hidden");
-      }
+    datePicker.classList.add("hidden");
 
-      if (finalMsg) {
-        finalMsg.classList.remove("hidden");
-      }
+    if (finalMsg) {
+      finalMsg.classList.remove("hidden");
+    }
 
-      const phone = "5515997237062";
-      const message = `anotado! dia ${formattedDate} 😊`;
-      const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+    // formata data
+    const [year, month, day] = date.split("-");
+    const formattedDate = `${day}/${month}`;
 
-      // abre WhatsApp direto 
-      window.location.href = url;
-    });
-  }
-
-});
-
-});
-
+    // abre WhatsApp
+    const phone = "5515997237062"; // seu número
+    const message = `anotado! dia ${formattedDate}, beijos minha gatinha gostosa já to com sdd`;
+    const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+    window.location.href = url;
+  });
+}
