@@ -63,7 +63,7 @@ window.addEventListener("load", () => {
       const [year, month, day] = date.split("-");
       const formattedDate = `${day}/${month}`;
       const phone = "5515997237062";
-      const message = `Anotado! Dia ${formattedDate}, beijo 😄`;
+      const message = `Anotado! Dia ${formattedDate}, beijos minha gatinha gostosa já to com sdd`;
 
       // detecta se é celular
       const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
@@ -76,3 +76,4 @@ window.addEventListener("load", () => {
     });
   }
 });
+
