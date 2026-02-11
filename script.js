@@ -1,16 +1,22 @@
-// espera a página carregar totalmente
+// Espera a página carregar totalmente
 window.addEventListener("load", () => {
+  console.log("Script carregou! ✅");
 
-  // CORAÇÃO
+  // ---------------------
+  // ❤️ CORAÇÃO
+  // ---------------------
   const heart = document.getElementById("heart");
   if (heart) {
     setTimeout(() => {
       heart.classList.remove("hidden");
       heart.classList.add("show");
+      console.log("Heart mostrado!");
     }, 800);
   }
 
-  // CARROSSEL
+  // ---------------------
+  // 🎠 CARROSSEL
+  // ---------------------
   const slides = document.querySelectorAll(".slide");
   const nextBtn = document.querySelector(".next");
 
@@ -20,47 +26,38 @@ window.addEventListener("load", () => {
     nextBtn.addEventListener("click", () => {
       slides[currentSlide].classList.remove("active");
       currentSlide++;
-
-      if (currentSlide >= slides.length) {
-        currentSlide = slides.length - 1;
-      }
-
+      if (currentSlide >= slides.length) currentSlide = slides.length - 1;
       slides[currentSlide].classList.add("active");
+      console.log("Slide atual:", currentSlide);
     });
   }
 
-  // foge + muda texto 
+  // ---------------------
+  // ❌ BOTÃO NÃO
+  // ---------------------
   const noBtn = document.querySelector(".no");
-
   if (noBtn) {
     let step = 0;
-
-    // muda texto ao clicar
-    noBtn.addEventListener("click", (e) => {
-      e.preventDefault();
-
+    noBtn.addEventListener("mouseover", () => {
+      // Muda o texto
       if (step === 0) {
         noBtn.textContent = "eu avisei";
-        step = 1;
+        step++;
       } else if (step === 1) {
         noBtn.textContent = "aceita por favor";
-        step = 2;
+        step++;
       }
-    });
 
-    // foge no hover
-    noBtn.addEventListener("mouseenter", () => {
-      const x = Math.random() * 200 - 90;
-      const y = Math.random() * 200 - 90;
+      // Faz o botão "fugir"
+      const x = Math.random() * 200 - 90; // deslocamento horizontal
+      const y = Math.random() * 200 - 90; // deslocamento vertical
       noBtn.style.transform = `translate(${x}px, ${y}px)`;
-    });
-
-    noBtn.addEventListener("mouseleave", () => {
-      noBtn.style.transform = "translate(0, 0)";
     });
   }
 
-  // BOTÃO SIM & MOSTRA CALENDÁRIO
+  // ---------------------
+  // ✅ BOTÃO SIM → MOSTRA CALENDÁRIO
+  // ---------------------
   const yesBtn = document.querySelector(".yes");
   const datePicker = document.getElementById("datePicker");
 
@@ -68,34 +65,37 @@ window.addEventListener("load", () => {
     yesBtn.addEventListener("click", () => {
       datePicker.classList.remove("hidden");
       datePicker.classList.add("show");
+      console.log("Calendário mostrado!");
     });
   }
 
-  // CONFIRMAR DATA & WHATSAPP (mobile-friendly)
+  // ---------------------
+  // 📅 CONFIRMAR DATA → WHATSAPP
+  // ---------------------
   const confirmBtn = document.querySelector(".confirm");
-const finalMsg = document.getElementById("finalMsg");
+  const finalMsg = document.getElementById("finalMsg");
 
-if (confirmBtn) {
-  confirmBtn.addEventListener("click", () => {
-    const dateInput = document.getElementById("date");
-    if (!dateInput || !dateInput.value) return;
+  if (confirmBtn && datePicker) {
+    confirmBtn.addEventListener("click", () => {
+      const dateInput = document.getElementById("date");
+      if (!dateInput || !dateInput.value) {
+        alert("Escolha uma data primeiro!");
+        return;
+      }
 
-    const date = dateInput.value;
+      const date = dateInput.value;
+      datePicker.classList.add("hidden");
+      if (finalMsg) finalMsg.classList.remove("hidden");
 
-    datePicker.classList.add("hidden");
+      // Formata a data
+      const [year, month, day] = date.split("-");
+      const formattedDate = `${day}/${month}`;
 
-    if (finalMsg) {
-      finalMsg.classList.remove("hidden");
-    }
-
-    // formata data
-    const [year, month, day] = date.split("-");
-    const formattedDate = `${day}/${month}`;
-
-    // abre WhatsApp
-    const phone = "5515997237062"; // seu número
-    const message = `anotado! dia ${formattedDate}, beijos minha gatinha gostosa já to com sdd`;
-    const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-    window.location.href = url;
-  });
-}
+      // Abre WhatsApp
+      const phone = "5515997237062"; // seu número
+      const message = `Anotado! Dia ${formattedDate}, beijo 😄`;
+      const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+      window.location.href = url;
+    });
+  }
+});
